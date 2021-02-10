@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     // リストがタップされた時の処理が記述されたメンバクラス
     private inner class ListItemClickListener : AdapterView.OnItemClickListener {
-        override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
             // タップされた行番号をフィールドの主キーIDに代入
             _cocktailId = position
