@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // 保存ボタンがタップされた時に処理メソッド
-    fun onSaveButton(view: View) {
+    fun onSaveButtonClick(view: View) {
         // 感想欄を取得
         val etNote = findViewById<EditText>(R.id.etNote)
         // 感想欄の入力値を消去
