@@ -51,6 +51,10 @@ class MainActivity : AppCompatActivity() {
         // ステートメント：SQL文を実行するオブジェクト
         var stmt = db.compileStatement(sqlDelete)
 
+        // 変数のバインド（SQL文中に記述した「？」に変数を埋め込む）
+        // 第一引数：「？」の順番、第二引数：埋め込む値
+        stmt.bindLong(1, _cocktailId.toLong())
+
         // 感想欄の入力値を消去
         etNote.setText("")
 
