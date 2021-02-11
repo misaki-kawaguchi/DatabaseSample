@@ -120,6 +120,16 @@ class MainActivity : AppCompatActivity() {
             // SELECT文を実行するにはSQLiteDatabaseクラスのrawQuery()メソッドを使う
             // 第一引数：SQL文字列、第二引数：バインド変数用のString配列
             val cursor = db.rawQuery(sql, null)
+
+            // データベースから取得した値を格納する変数の用意。データがなかった時のための初期値も用意
+            var note = ""
+            // SQL実行の戻り値であるカーソルオブジェクトをループさせてデータベース内のデータを取得
+            while(cursor.moveToNext()) {
+                // カラムのインデックス値を取得
+                val idxNote = cursor.getColumnIndex("note")
+                // カラムのインデックス値を元に実際のデータを取得
+                note = cursor.getString(idxNote)
+            }
         }
     }
 }
