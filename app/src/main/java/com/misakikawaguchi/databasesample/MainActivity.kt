@@ -43,8 +43,9 @@ class MainActivity : AppCompatActivity() {
         // データベースヘルパーオブジェクトからデータベース接続オブジェクトを取得
         val db = _helper.writableDatabase
 
-
-
+        // リストで選択されたカクテルのメモデータを削除。その後インサートを行う
+        // 削除用SQL文字列を用意、変数によって値が変わるところは「？」と記述する
+        val sqlDelete = "DELETE FROM cocktailmemos WHERE _id = ?"
 
         // 感想欄の入力値を消去
         etNote.setText("")
