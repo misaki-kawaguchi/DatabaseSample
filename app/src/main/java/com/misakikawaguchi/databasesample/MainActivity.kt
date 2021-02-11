@@ -47,6 +47,10 @@ class MainActivity : AppCompatActivity() {
         // 削除用SQL文字列を用意、変数によって値が変わるところは「？」と記述する
         val sqlDelete = "DELETE FROM cocktailmemos WHERE _id = ?"
 
+        // SQL文字列をもとにプリペアドステートメントを取得（ステートメントオブジェクトをもらう）
+        // ステートメント：SQL文を実行するオブジェクト
+        var stmt = db.compileStatement(sqlDelete)
+
         // 感想欄の入力値を消去
         etNote.setText("")
 
