@@ -1,6 +1,7 @@
 package com.misakikawaguchi.databasesample
 
 import android.content.Context
+import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 // データベースヘルパークラス
@@ -14,5 +15,24 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         private const val DATABASE_NAME = "cocktailmemo.db"
         // バージョン情報の定数フィールド
         private const val DATABASE_VERSION = 1
+    }
+
+    // Android端末内部に親クラスのコンストラクタで指定したデータベース名のデータベースが存在しないとき（初期状態に1回だけ実行される）
+    // 初期設定に必要なSQLはonCreate()で実行する
+    override fun onCreate(db: SQLiteDatabase) {
+        // テーブル作成用SQL文字列の作成
+        val sb = StringBuilder()
+        sb.append("CREATE TABLE cocktailmemos(")
+        // カラム名：_id, 内容：カクテルリストビュー上の行番号, データ型：INTEGER
+        sb.append("_id INTEGER PRIMARY KEY,")
+        // カラム名：name, 内容：カクテル名, データ型：TEXT
+        sb.append("name TEXT,")
+        // カラム名：note, 内容：感想, データ型：TEXT
+        sb.append("note TEXT")
+        sb.append(");")
+        val sql = sb.toString()
+
+        // SQLの実行（cocktailmemosテーブルを作成するSQL文を実行）
+        db.execSQL(sql)
     }
 }
