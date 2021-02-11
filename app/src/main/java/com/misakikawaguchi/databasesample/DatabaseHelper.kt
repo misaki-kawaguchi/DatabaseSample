@@ -35,4 +35,8 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         // SQLの実行（cocktailmemosテーブルを作成するSQL文を実行）
         db.execSQL(sql)
     }
+
+    // 内部のデータベースのバージョン番号とコンストラクタの引数で渡されるバージョン番号に違いがある場合に実行される
+    // 第一引数：データベース接続オブジェクト、第二引数：内部データベースの現在のバージョン番号、第三引数：コンストラクタで設定されたバージョン番号
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {}
 }
