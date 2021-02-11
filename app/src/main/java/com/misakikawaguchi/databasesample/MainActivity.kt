@@ -110,6 +110,11 @@ class MainActivity : AppCompatActivity() {
 
             // データベースヘルパーオブジェクトからデータベース接続オブジェクトを取得
             val db  = _helper.writableDatabase
+
+            // 主キーによる検索SQL文字列の用意
+            // AndroidでSELECT文を実行するメソッドでは変数ぼバインドが使いづらい
+            // 文字列テンプレートを使って変数を直接埋め込んだSQL文字列を作成する
+            val sql = "SELECT * FROM cocktailmemos WHERE _id = ${_cocktailId}"
         }
     }
 }
