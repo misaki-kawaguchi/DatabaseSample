@@ -37,6 +37,15 @@ class MainActivity : AppCompatActivity() {
     fun onSaveButtonClick(view: View) {
         // 感想欄を取得
         val etNote = findViewById<EditText>(R.id.etNote)
+        // 入力された感想を取得
+        val note = etNote.text.toString()
+
+        // データベースヘルパーオブジェクトからデータベース接続オブジェクトを取得
+        val db = _helper.writableDatabase
+
+
+
+
         // 感想欄の入力値を消去
         etNote.setText("")
 
