@@ -130,6 +130,10 @@ class MainActivity : AppCompatActivity() {
                 // カラムのインデックス値を元に実際のデータを取得
                 note = cursor.getString(idxNote)
             }
+
+            // 感想のEditTextの各画面部品を取得しデータベースの値を反映
+            val etNote = findViewById<EditText>(R.id.etNote)
+            etNote.setText(note)
         }
     }
 }
