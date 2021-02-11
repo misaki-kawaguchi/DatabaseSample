@@ -13,6 +13,9 @@ class MainActivity : AppCompatActivity() {
     // 選択されたカクテル名を表すフィールド
     private var _cocktailName  = ""
 
+    // データベースヘルパーオブジェクト（ヘルパークラスの生成）
+    private val _helper = DatabaseHelper(this@MainActivity)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,6 +24,13 @@ class MainActivity : AppCompatActivity() {
         val lvCocktail = findViewById<ListView>(R.id.lvCocktail)
         // lvCocktailにリスナを登録
         lvCocktail.onItemClickListener = ListItemClickListener()
+    }
+
+    // ヘルパークラスの解放処理
+    override fun onDestroy() {
+        // ヘルパーオブジェクトの開放
+        _helper.close()
+        super.onDestroy()
     }
 
     // 保存ボタンがタップされた時に処理メソッド
