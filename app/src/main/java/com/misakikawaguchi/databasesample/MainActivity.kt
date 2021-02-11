@@ -55,6 +55,25 @@ class MainActivity : AppCompatActivity() {
         // 第一引数：「？」の順番、第二引数：埋め込む値
         stmt.bindLong(1, _cocktailId.toLong())
 
+        // 削除SQLの実行
+        // INSERT文→executeInsert() 戻り値はINSERTされた行の主キーの値
+        // UPDATE/DELETE文→executeUpdateDelete() 戻り値は実行件数
+        stmt.executeUpdateDelete()
+
+        // インサート用SQL文字列の用意
+        val sqlInsert = "INSERT INTO cocktailmemos (_id, name, note) VALUES (?, ?, ?)"
+
+        // SQL文字列を元にプリペアドステートメントを取得
+        stmt = db.compileStatement(sqlInsert)
+
+        // 変数のバインド
+        stmt.bindLong(1, _cocktailId.toLong())
+        stmt.bindString(2, _cocktailName)
+        stmt.bindString(3, note)
+
+        // インサートSQLの実行
+        stmt.executeInsert()
+
         // 感想欄の入力値を消去
         etNote.setText("")
 
