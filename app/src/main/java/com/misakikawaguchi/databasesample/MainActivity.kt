@@ -115,6 +115,11 @@ class MainActivity : AppCompatActivity() {
             // AndroidでSELECT文を実行するメソッドでは変数ぼバインドが使いづらい
             // 文字列テンプレートを使って変数を直接埋め込んだSQL文字列を作成する
             val sql = "SELECT * FROM cocktailmemos WHERE _id = ${_cocktailId}"
+
+            // SQLの実行
+            // SELECT文を実行するにはSQLiteDatabaseクラスのrawQuery()メソッドを使う
+            // 第一引数：SQL文字列、第二引数：バインド変数用のString配列
+            val cursor = db.rawQuery(sql, null)
         }
     }
 }
