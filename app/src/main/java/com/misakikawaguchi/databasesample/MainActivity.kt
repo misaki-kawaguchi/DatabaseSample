@@ -107,6 +107,9 @@ class MainActivity : AppCompatActivity() {
             val btnSave = findViewById<Button>(R.id.btnSave)
             // 保存ボタンをタップできるように設定
             btnSave.isEnabled = true
+
+            // データベースヘルパーオブジェクトからデータベース接続オブジェクトを取得
+            val db  = _helper.writableDatabase
         }
     }
 }
